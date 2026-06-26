@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="'SF Pro Display', -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="glow1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#58a6ff" stop-opacity=".15"/>
+      <stop offset="100%" stop-color="#3fb950" stop-opacity=".05"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="600" fill="url(#bg)" rx="12"/>
+  
+  <!-- Header -->
+  <text x="60" y="60" font-size="28" font-weight="700" fill="#e6edf3">🧬 Twins Protocol</text>
+  <text x="60" y="90" font-size="16" fill="#8b949e">Agent-to-Agent Communication Protocol · 双生协议</text>
+  
+  <!-- Tagline -->
+  <text x="60" y="130" font-size="20" font-weight="600" fill="#58a6ff">One JSONL file. N agents. Zero infrastructure.</text>
+  
+  <!-- Agent A Box -->
+  <rect x="60" y="170" width="280" height="180" rx="12" fill="#1c2333" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="80" y="200" font-size="16" font-weight="600" fill="#58a6ff">🤖 Agent A</text>
+  <text x="80" y="225" font-size="12" fill="#8b949e">Python / Hermes</text>
+  <line x1="80" y1="240" x2="320" y2="240" stroke="#30363d" stroke-width="1"/>
+  <text x="80" y="262" font-size="13" fill="#e6edf3">✦ shell.run</text>
+  <text x="80" y="282" font-size="13" fill="#e6edf3">✦ file.read/write</text>
+  <text x="80" y="302" font-size="13" fill="#e6edf3">✦ screenshot</text>
+  <text x="80" y="322" font-size="13" fill="#e6edf3">✦ Ed25519 sign</text>
+  <text x="80" y="342" font-size="12" fill="#3fb950">▶ 185 cognitive skills</text>
+
+  <!-- JSONL File Center -->
+  <rect x="460" y="200" width="280" height="120" rx="12" fill="#0d1117" stroke="#3fb950" stroke-width="2"/>
+  <text x="490" y="235" font-size="15" font-weight="600" fill="#3fb950">📄 codex_outbox.jsonl</text>
+  <text x="490" y="260" font-size="12" fill="#8b949e">{type: "tool_request", ...}</text>
+  <text x="490" y="280" font-size="12" fill="#8b949e">{type: "tool_result", ...}</text>
+  <text x="490" y="300" font-size="12" fill="#8b949e">{type: "message", ...}</text>
+  
+  <!-- Agent B Box -->
+  <rect x="860" y="170" width="280" height="180" rx="12" fill="#1c2a1c" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="880" y="200" font-size="16" font-weight="600" fill="#3fb950">🤖 Agent B</text>
+  <text x="880" y="225" font-size="12" fill="#8b949e">Node.js / Codex++</text>
+  <line x1="880" y1="240" x2="1120" y2="240" stroke="#30363d" stroke-width="1"/>
+  <text x="880" y="262" font-size="13" fill="#e6edf3">✦ shell.run</text>
+  <text x="880" y="282" font-size="13" fill="#e6edf3">✦ js.eval</text>
+  <text x="880" y="302" font-size="13" fill="#e6edf3">✦ workspace.read</text>
+  <text x="880" y="322" font-size="13" fill="#e6edf3">✦ Ed25519 verify</text>
+  <text x="880" y="342" font-size="12" fill="#58a6ff">▶ 3 unified endpoints</text>
+
+  <!-- Arrows A → File -->
+  <path d="M340,240 L460,260" stroke="#1f6feb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M460,280 L340,260" stroke="#1f6feb" stroke-width="2" fill="none" stroke-dasharray="4,4"/>
+  
+  <!-- Arrows B → File -->
+  <path d="M860,240 L740,260" stroke="#3fb950" stroke-width="2" fill="none"/>
+  <path d="M740,280 L860,260" stroke="#3fb950" stroke-width="2" fill="none" stroke-dasharray="4,4"/>
+
+  <!-- Bottom strip -->
+  <rect x="60" y="380" width="1080" height="200" rx="12" fill="url(#glow1)"/>
+  
+  <!-- Features -->
+  <text x="80" y="415" font-size="16" font-weight="600" fill="#e6edf3">✨ Key Features</text>
+  
+  <circle cx="95" cy="445" r="4" fill="#3fb950"/>
+  <text x="110" y="450" font-size="14" fill="#e6edf3">File-Based — </text>
+  <text x="254" y="450" font-size="14" fill="#8b949e">No broker, no DB, no gRPC. Just JSONL.</text>
+  
+  <circle cx="95" cy="475" r="4" fill="#3fb950"/>
+  <text x="110" y="480" font-size="14" fill="#e6edf3">Cross-Language — </text>
+  <text x="296" y="480" font-size="14" fill="#8b949e">Python ↔ Node.js Ed25519 verified</text>
+  
+  <circle cx="95" cy="505" r="4" fill="#3fb950"/>
+  <text x="110" y="510" font-size="14" fill="#e6edf3">Self-Healing — </text>
+  <text x="270" y="510" font-size="14" fill="#8b949e">Process watchdog auto-restarts</text>
+  
+  <circle cx="95" cy="535" r="4" fill="#3fb950"/>
+  <text x="110" y="540" font-size="14" fill="#e6edf3">MCP in Reverse — </text>
+  <text x="278" y="540" font-size="14" fill="#8b949e">Not AI→tools. AI↔AI. Any agent's plugin, every agent's plugin.</text>
+
+  <!-- Right side: badges -->
+  <rect x="720" y="400" width="400" height="160" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="740" y="430" font-size="14" font-weight="600" fill="#e6edf3">📦 Quick Start</text>
+  <rect x="740" y="445" width="360" height="30" rx="6" fill="#161b22"/>
+  <text x="750" y="465" font-size="12" fill="#8b949e">$ pip install twin-protocol</text>
+  <rect x="740" y="480" width="360" height="30" rx="6" fill="#161b22"/>
+  <text x="750" y="500" font-size="12" fill="#8b949e">$ twins init my-project && twins test</text>
+  <rect x="740" y="515" width="360" height="30" rx="6" fill="#161b22"/>
+  <text x="750" y="535" font-size="12" fill="#8b949e">$ docker compose up  # One-click</text>
+</svg>
