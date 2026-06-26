@@ -1,0 +1,47 @@
+﻿# Twins Protocol — .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+dist/
+build/
+*.egg-info/
+*.egg
+.venv/
+venv/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Twins Protocol — 运行时文件（不提交）
+codex_outbox.jsonl
+shared_cognition.jsonl
+.processed_ids.txt
+*.heartbeat
+*.lock
+
+# Test / Temp
+test_output/
+tmp/
+temp/

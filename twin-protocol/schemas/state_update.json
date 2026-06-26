@@ -1,0 +1,22 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://twins-protocol.dev/schemas/state_update.json",
+  "title": "Twins Protocol - State Update",
+  "description": "状态更新：同步 agent 当前阶段、状态、时间戳",
+  "type": "object",
+  "required": ["type", "source", "timestamp", "state"],
+  "properties": {
+    "type": { "const": "state_update" },
+    "source": { "type": "string", "pattern": "^agent-[a-z]$|^hermes$|^codex$" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "state": {
+      "type": "object",
+      "required": ["phase"],
+      "properties": {
+        "phase": { "type": "string" },
+        "last_reply_ts": { "type": "string", "format": "date-time" },
+        "last_seen_ts": { "type": "string", "format": "date-time", "description": "接收方最后一次处理的消息时间戳，防重放" }
+      }
+    }
+  }
+}

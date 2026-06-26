@@ -1,0 +1,23 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://twins-protocol.dev/schemas/message.json",
+  "title": "Twins Protocol - Message",
+  "description": "文本消息：双向 AI agent 间的文本通信",
+  "type": "object",
+  "required": ["type", "source", "timestamp", "id", "payload"],
+  "properties": {
+    "type": { "const": "message" },
+    "source": { "type": "string", "pattern": "^agent-[a-z]$|^hermes$|^codex$" },
+    "target": { "type": "string", "pattern": "^agent-[a-z]$|^hermes$|^codex$|^\\*$" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "id": { "type": "string", "format": "uuid" },
+    "payload": {
+      "type": "object",
+      "required": ["text"],
+      "properties": {
+        "text": { "type": "string" },
+        "reply_to": { "type": "string", "format": "uuid" }
+      }
+    }
+  }
+}
