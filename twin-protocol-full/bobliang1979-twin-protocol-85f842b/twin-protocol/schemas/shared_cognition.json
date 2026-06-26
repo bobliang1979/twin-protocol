@@ -1,0 +1,57 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://twins-protocol.dev/schemas/shared_cognition.json",
+  "title": "Twins Protocol - Shared Cognition Layer",
+  "description": "共享认知层：双方共同维护的协作状态",
+  "type": "object",
+  "required": ["session_id", "goal", "phase"],
+  "properties": {
+    "session_id": { "type": "string", "format": "uuid" },
+    "goal": { "type": "string" },
+    "phase": { "type": "string" },
+    "agent_a": {
+      "type": "object",
+      "properties": {
+        "current_phase": { "type": "string" },
+        "tools_exposed": { "type": "array", "items": { "type": "string" } },
+        "last_reply_ts": { "type": "string", "format": "date-time" }
+      }
+    },
+    "agent_b": {
+      "type": "object",
+      "properties": {
+        "current_phase": { "type": "string" },
+        "tools_exposed": { "type": "array", "items": { "type": "string" } },
+        "last_reply_ts": { "type": "string", "format": "date-time" }
+      }
+    },
+    "agreed_items": { "type": "array", "items": { "type": "string" } },
+    "pending_items": { "type": "array", "items": { "type": "string" } },
+    "active_tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "goal", "subtasks"],
+        "properties": {
+          "id": { "type": "string" },
+          "goal": { "type": "string" },
+          "subtasks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "desc", "assigned_to", "status"],
+              "properties": {
+                "id": { "type": "string" },
+                "desc": { "type": "string" },
+                "assigned_to": { "type": "string", "enum": ["agent-a", "agent-b", "both", "hermes", "codex"] },
+                "status": { "type": "string", "enum": ["pending", "in_progress", "done"] },
+                "result": { "type": ["string", "null"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "_ts": { "type": "string", "format": "date-time" }
+  }
+}

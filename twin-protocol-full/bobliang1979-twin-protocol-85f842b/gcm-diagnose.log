@@ -1,0 +1,194 @@
+﻿Diagnose log at 2026-06-26T12:21:23Z
+
+AppPath: C:\Users\10074\AppData\Local\hermes\git\mingw64\bin\git-credential-manager.exe
+InstallDir: C:\Users\10074\AppData\Local\hermes\git\mingw64\bin\
+Version: 2.7.3+5fa7116896c82164996a609accd1c5ad90fe730a
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: Windows
+OSVersion: 10.0 (build 19045)
+Reading environment variables... OK
+ Variables:
+DOTNET_ROOT=C:\Users\10074\Tools\dotnet
+ProgramFiles(x86)=C:\Program Files (x86)
+MSYSTEM=MINGW64
+ProgramW6432=C:\Program Files
+windir=C:\WINDOWS
+ChocolateyInstall=C:\ProgramData\chocolatey
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
+TMP=C:\Temp
+CODEX_INTERNAL_ORIGINATOR_OVERRIDE=Codex Desktop
+Path=C:/Users/10074/AppData/Local/hermes/git/mingw64/libexec/git-core;C:\Users\10074\AppData\Local\hermes\git\mingw64\bin;C:\Users\10074\AppData\Local\hermes\git\usr\bin;C:\Users\10074\bin;C:\Users\10074\.codex\tmp\arg0\codex-arg0p9jneB;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Users\10074\AppData\Local\hermes\hermes-agent\venv\Scripts;C:\Users\10074\AppData\Local\hermes\bin;C:\python313\Scripts\;C:\python313\;C:\Users\10074\.cargo\bin;C:\Users\10074\AppData\Local\Programs\CodeBuddy CN\bin;C:\Users\10074\AppData\Local\Python\bin;C:\Users\10074\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\10074\AppData\Local\hermes\git\cmd;C:\Users\10074\AppData\Local\hermes\git\bin;C:\Users\10074\AppData\Local\hermes\git\usr\bin;C:\Users\10074\AppData\Local\Programs\Ollama;C:\Users\10074\AppData\Roaming\npm;C:\Users\10074\.local\bin;C:\Users\10074\AppData\Local\Programs\Cua\cua-driver\bin;C:\Users\10074\AppData\Local\OpenAI\Codex\bin\ada252862d154cdd;C:\Program Files\WindowsApps\OpenAI.Codex_26.616.10790.0_x64__2p2nqsd0c76g0\app\resources
+PUBLIC=C:\Users\Public
+RUST_LOG=warn
+OLLAMA_ORIGINS=*
+PROCESSOR_REVISION=5e03
+ChocolateyLastPathUpdate=133891096091991248
+USERPROFILE=C:\Users\10074
+HERMES_GIT_BASH_PATH=C:\Users\10074\AppData\Local\hermes\git\bin\bash.exe
+LOGONSERVER=\\DESKTOP-TDHBJOH
+TEMP=C:\Users\10074\AppData\Local\Temp
+DOTNET_MULTILEVEL_LOOKUP=0
+USERNAME=10074
+SHELL=C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+ZSH_TMUX_AUTOSTARTED=true
+CODEX_THREAD_ID=019f02f3-2564-7ef1-9486-29f3cbc60d9b
+PLINK_PROTOCOL=ssh
+TOPAZLABS_LICENSE=C:\ProgramData\Topaz Labs LLC\Topaz Video AI\models\VR.lic
+HERMES_HOME=C:\Users\10074\AppData\Local\hermes
+PROCESSOR_ARCHITECTURE=AMD64
+CommonProgramFiles=C:\Program Files\Common Files
+SystemRoot=C:\WINDOWS
+PROCESSOR_LEVEL=6
+CODEX_SHELL=1
+ProgramData=C:\ProgramData
+LC_CTYPE=C.UTF-8
+ZSH_TMUX_AUTOSTART=false
+HOMEPATH=\Users\10074
+USERDOMAIN=DESKTOP-TDHBJOH
+ALLUSERSPROFILE=C:\ProgramData
+CommonProgramW6432=C:\Program Files\Common Files
+PYTHONIOENCODING=utf-8
+TERM=xterm-256color
+PYTHONUTF8=1
+GIT_EXEC_PATH=C:/Users/10074/AppData/Local/hermes/git/mingw64/libexec/git-core
+DriverData=C:\Windows\System32\Drivers\DriverData
+HOMEDRIVE=C:
+DISABLE_AUTO_UPDATE=true
+GIT_TRACE2_PARENT_SID=66a7c805-a8d7-4094-9fdb-2a61c0529a23
+SystemDrive=C:
+NUMBER_OF_PROCESSORS=8
+OS=Windows_NT
+ZES_ENABLE_SYSMAN=1
+ProgramFiles=C:\Program Files
+ComSpec=C:\WINDOWS\system32\cmd.exe
+USERDOMAIN_ROAMINGPROFILE=DESKTOP-TDHBJOH
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+HOME=C:\Users\10074
+PSModulePath=C:\Users\10074\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+TMPDIR=C:\Temp
+APPDATA=C:\Users\10074\AppData\Roaming
+OneDrive=C:\Users\10074\OneDrive
+COMPUTERNAME=DESKTOP-TDHBJOH
+LOCALAPPDATA=C:\Users\10074\AppData\Local
+OMP_WAIT_POLICY=PASSIVE
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+COLORTERM=truecolor
+KMP_BLOCKTIME=0
+LOG_FORMAT=json
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is 'C:\Temp\'...
+Checking basic file I/O...
+Writing to temporary file 'C:\Temp\82854bdb92a046fc4156dcb3'... OK
+Reading from temporary file 'C:\Temp\82854bdb92a046fc4156dcb3'... OK
+Deleting temporary file 'C:\Temp\82854bdb92a046fc4156dcb3'... OK
+Testing IFileSystem instance...
+UserHomePath: C:\Users\10074
+UserDataDirectoryPath: C:\Users\10074\.gcm
+GetCurrentDirectory(): C:\Users\10074\Documents\控制
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com...Sending HEAD request to https://example.com... OK
+ OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:13438/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.54.0.windows.1'
+Locating current repository...Git repository at 'C:/Users/10074/Documents/控制/.git'
+ OK
+Listing all Git configuration... OK
+Git configuration:
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	core.symlinks=false
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	core.autocrlf=true
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	core.fscache=true
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	color.interactive=true
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	color.ui=auto
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	help.format=html
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	diff.astextplain.textconv=astextplain
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	rebase.autosquash=true
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	filter.lfs.clean=git-lfs clean -- %f
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	filter.lfs.process=git-lfs filter-process
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	filter.lfs.required=true
+file:C:/Users/10074/AppData/Local/hermes/git/etc/gitconfig	credential.helper=!"C:/Users/10074/AppData/Local/hermes/git/mingw64/bin/git-credential-manager.exe"
+file:C:/Users/10074/.gitconfig	windows.appendatomically=false
+file:C:/Users/10074/.gitconfig	credential.helperselector.selected=manager
+file:C:/Users/10074/.gitconfig	http.proxy=http://localhost:29758
+file:C:/Users/10074/.gitconfig	https.proxy=http://localhost:29758
+file:C:/Users/10074/.gitconfig	user.email=test@hermes-bridge.dev
+file:C:/Users/10074/.gitconfig	user.name=Hermes Bridge Test
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=false
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	core.symlinks=false
+file:.git/config	core.ignorecase=true
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: True
+Exception: None
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential... OK
+Reading test credential... OK
+Deleting test credential... OK
+
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker is not enabled.
+Flow type is: Auto
+Gathering MSAL token cache data... OK
+CacheDirectory: C:\Users\10074\AppData\Local\.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: C:\Users\10074\AppData\Local\.IdentityService\msal.cache
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+
+------------
+Diagnostic: GitHub API
+Skipped: False
+Success: True
+Exception: None
+Log:
+Using 'https://github.com/' as API target.
+Querying '/meta' endpoint... OK
+

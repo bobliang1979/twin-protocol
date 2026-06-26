@@ -1,0 +1,10 @@
+﻿interface:
+  display_name: "Tabbit Browser 技术技能"
+  short_description: "Tabbit AI 原生浏览器的 Agent 与 Skills 开发"
+  brand_color: "#8B5CF6"
+  default_prompt: "使用 $tabbit-browser 来理解 Tabbit 浏览器的 Agent 系统、创建自定义 Skills、或编写浏览器自动化工作流"
+
+dependencies: {}
+
+policy:
+  allow_implicit_invocation: true

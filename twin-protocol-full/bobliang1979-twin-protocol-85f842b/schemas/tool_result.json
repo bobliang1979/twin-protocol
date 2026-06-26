@@ -1,0 +1,18 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://twins-protocol.dev/schemas/tool_result.json",
+  "title": "Twins Protocol - Tool Result",
+  "description": "工具调用结果：工具执行后的返回数据",
+  "type": "object",
+  "required": ["type", "source", "request_id", "tool"],
+  "properties": {
+    "type": { "const": "tool_result" },
+    "source": { "type": "string", "pattern": "^agent-[a-z]$|^hermes$|^codex$" },
+    "request_id": { "type": "string", "format": "uuid" },
+    "tool": { "type": "string" },
+    "result": { "type": ["object", "null"] },
+    "error": { "type": ["string", "null"] },
+    "execution_ms": { "type": "integer", "minimum": 0, "description": "工具执行耗时（毫秒）" },
+    "_ts": { "type": "string", "format": "date-time" }
+  }
+}

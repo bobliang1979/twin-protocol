@@ -1,0 +1,5 @@
+﻿FROM node:20-alpine
+WORKDIR /app
+RUN apk add --no-cache curl
+EXPOSE 3737
+CMD ["node", "twins-solo.js"]
