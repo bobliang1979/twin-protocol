@@ -13,7 +13,7 @@ Usage:
 """
 import json, uuid, datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
-from urllib.request import Request, urlopen
+from urllib.request import Request, urlopen, ProxyHandler, build_opener
 from urllib.error import URLError
 from typing import Optional
 
@@ -86,7 +86,7 @@ class _TwinsHandler(BaseHTTPRequestHandler):
                     "tool": tool,
                     "source": "twins-server",
                     "target": source,
-                    "result": result.get("stdout") or result.get("content") or result,
+                    "result": result,
                     "error": result.get("error"),
                     "_ts": _ts(),
                 }
@@ -163,7 +163,7 @@ def send(url: str, msg: dict, timeout: int = 30) -> Optional[dict]:
     try:
         data = json.dumps(msg, ensure_ascii=False).encode("utf-8")
         req = Request(
-            url.rstrip("/") + "/",
+            url,
             data=data,
             headers={
                 "Content-Type": "application/json",
@@ -172,8 +172,8 @@ def send(url: str, msg: dict, timeout: int = 30) -> Optional[dict]:
             method="POST",
         )
         # Bypass system proxy (common on Windows)
-        proxy_handler = urllib.request.ProxyHandler({})
-        opener = urllib.request.build_opener(proxy_handler)
+        proxy_handler = ProxyHandler({})
+        opener = build_opener(proxy_handler)
         with opener.open(req, timeout=timeout) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except URLError as e:
