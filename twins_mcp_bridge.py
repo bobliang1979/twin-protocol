@@ -25,27 +25,27 @@ from typing import Optional
 
 MCP_SERVERS = {
     "filesystem": {
-        "command": "npx",
+        "command": "npx.cmd" if os.name == "nt" else "npx",
         "args": ["-y", "@modelcontextprotocol/server-filesystem"],
         "description": "File system operations"
     },
     "github": {
-        "command": "npx",
+        "command": "npx.cmd" if os.name == "nt" else "npx",
         "args": ["-y", "@modelcontextprotocol/server-github"],
         "description": "GitHub API integration"
     },
     "postgres": {
-        "command": "npx",
+        "command": "npx.cmd" if os.name == "nt" else "npx",
         "args": ["-y", "@modelcontextprotocol/server-postgres"],
         "description": "PostgreSQL database queries"
     },
     "playwright": {
-        "command": "npx",
+        "command": "npx.cmd" if os.name == "nt" else "npx",
         "args": ["-y", "@playwright/mcp"],
         "description": "Browser automation"
     },
     "sequential-thinking": {
-        "command": "npx",
+        "command": "npx.cmd" if os.name == "nt" else "npx",
         "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
         "description": "Structured reasoning"
     },
