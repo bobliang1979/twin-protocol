@@ -1,4 +1,4 @@
-# Python
+﻿# Python
 __pycache__/
 *.pyc
 *.egg-info/
@@ -41,3 +41,10 @@ __pycache__/
 .env
 .env.local
 *.log
+
+/npmrc
+.env
+.env.local
+__pycache__/
+*.pyc
+skills/

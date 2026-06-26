@@ -1,0 +1,29 @@
+﻿$ pip install twin-protocol && twins demo
+
+  🧬 Twins Protocol — Solo Demo Mode
+  ====================================
+
+  [Agent Alice · Python]    [Agent Bob · Node.js]
+         │                         │
+         │  tool_request            │
+         │  shell.run("ls -la")     │
+         │─────────────────────────▶│
+         │                         │
+         │  tool_result             │
+         │  stdout: "total 42..."   │
+         │◀─────────────────────────│
+         │                         │
+         │  message                 │
+         │  "I found 12 files."     │
+         │─────────────────────────▶│
+         │                         │
+         │  state_update            │
+         │  phase: "analyzing"      │
+         │─────────────────────────▶│
+         │                         │
+
+  🔐 All messages signed with Ed25519
+  📋 Shared cognition layer active
+  🌐 http://localhost:3737 — Dashboard
+
+  Press Ctrl+C to stop
