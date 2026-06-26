@@ -35,13 +35,13 @@ Usage:
     )
     outbox.append(result.to_json())
 """
-import json, uuid, time
+import json, uuid, time, datetime
 from dataclasses import dataclass, field
 from typing import Optional
 
 
 def _ts():
-    return datetime.datetime.utcnow().isoformat() + "Z" if __import__('datetime') else time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    return datetime.datetime.utcnow().isoformat() + "Z"
 
 
 @dataclass
