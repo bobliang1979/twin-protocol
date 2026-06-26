@@ -72,6 +72,57 @@ This is **MCP in reverse**. MCP → AI → tools (centralized, each AI only call
 | **Cross-language** | Python signs, Node.js verifies. Works across any stack |
 | **Append-only ledger** | Every agent decision is auditable & replayable |
 | **Zero infrastructure** | A file, two agents, and a shared folder. That's it |
+
+---
+
+## 🖥️ Two AIs, One Computer / 双 AI 协作操控电脑
+
+**Not "one AI controlling a computer". Two AIs collaborating to control one computer.**
+**不是"一个 AI 控制电脑"。是两个 AI 协作控制一台电脑。**
+
+### 中文
+
+现有的方案（Cursor、Claude Computer Use）都是一个 AI 既看屏幕又做决策——看和分析是同一个模型，有认知盲区。
+
+双生协议把这两个角色拆开：
+
+```
+Agent A (Hermes)                    Agent B (Codex++)
+┌────────────────────┐              ┌────────────────────┐
+│ ① 截图 (cua-driver)│ ──────────▶ │ ② 分析 (js.eval)   │
+│ ⑤ 执行操作         │ ◀────────── │ ③ 决策 (reasoning) │
+│ ⑥ 再次截图验证     │              │ ④ 生成代码         │
+└────────────────────┘              └────────────────────┘
+         ↕ 通过 outbox.jsonl 通信 ↕
+```
+
+| 对比 | 单 AI 控制电脑 | 双 AI 协作（Twins） |
+|------|-------------|-------------------|
+| **视觉** | 一个模型看完再想 | Hermes 专精截图 + cua-driver 38 工具 |
+| **推理** | 同一模型有盲区 | Codex++ 专精分析 + js.eval/推理 |
+| **工具链** | 只有自己的工具 | 双方工具互调，能力翻倍 |
+| **容错** | 一个人犯错没人发现 | 互审互修，出错对方立即修复 |
+| **协作模式** | 串行：看→想→做 | 并行：操作同时分析 |
+
+已验证闭环：Hermes 截图 → outbox → Codex++ 分析 (2ms) → outbox → Hermes 执行
+
+### English
+
+Existing solutions (Cursor, Claude Computer Use) have one AI both seeing and deciding — the same model handles perception and reasoning, creating blind spots.
+
+Twins Protocol separates these roles:
+
+| Comparison | Single AI Desktop Control | Dual AI (Twins) |
+|-----------|-------------------------|-----------------|
+| **Vision** | One model sees then thinks | Hermes specializes in screenshots + cua-driver (38 tools) |
+| **Reasoning** | Same model, same blind spots | Codex++ specializes in analysis + js.eval |
+| **Toolchain** | Only its own tools | Both agents share tools. One plugin = both agents gain it |
+| **Fault tolerance** | One mistake, no one catches | Mutual review: if one fails, the other fixes instantly |
+| **Workflow** | Serial: see→think→do | Parallel: one operates while the other analyzes |
+
+**Verified:** Hermes screenshot → outbox → Codex++ analysis (2ms) → outbox → Hermes executes
+
+**One sentence:** Other approaches are "one AI operating a computer." Twins Protocol is "one AI sees, one AI thinks, together they act" — the direct parallel of human teamwork.
 ┌─────────────────┐         codex_outbox.jsonl         ┌─────────────────┐
 │                 │ ─── tool_request ──────────────▶  │                 │
 │   Agent A       │ ◀── tool_result ────────────────  │   Agent B       │
