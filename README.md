@@ -18,31 +18,52 @@
 
 ---
 
-## ⚡ 10 Seconds
+## ⚡ 10 Seconds / 10 秒快速体验
 
 ```bash
 pip install twin-protocol
 twins demo
-# → Opens browser at http://localhost:3737
-# → Two AI agents discover each other and start collaborating
+# → 浏览器打开 http://localhost:3737
+# → 两个 AI 智能体自动发现对方并开始协作
 ```
 
-Or with Docker:
+或者用 Docker 一行启动：
 
 ```bash
 docker compose up
-# → Two AI agents. One shared file. Zero config.
+# → 两个 AI 智能体 · 一个共享文件 · 零配置
 ```
 
 ---
 
-## 🧬 What is Twins Protocol?
+## 🧬 What is Twins Protocol? / 双生协议是什么？
 
 **MCP connects one AI to its tools. Twins connects any AI to any other AI's tools.**
+**MCP 连接一个 AI 到它的工具。Twins 连接任何 AI 到任何其他 AI 的工具。**
+
+### English
 
 A minimal, file-based protocol where AI agents discover each other, sign messages with Ed25519, and trade abilities through nothing but a shared JSONL file.
 
-```
+**One JSONL file. N agents. Zero infrastructure.**
+
+This is **MCP in reverse**. MCP → AI → tools (centralized, each AI only calls its own tools). Twins → AI ↔ AI (decentralized, any agent can call any other agent's capabilities). One agent installs a plugin → every agent gains that plugin.
+
+### 中文
+
+双生协议是一个极简的、基于文件的协议。AI 智能体通过一个共享的 JSONL 文件发现彼此、签名消息、互相调用能力。
+
+**【一个 JSONL 文件 · N 个智能体 · 零基础设施】**
+
+这是 **MCP 的反向**。MCP 是 AI→工具（中心化，每个 AI 只能调自己的工具）。双生协议是 AI↔AI（去中心化，任何智能体可以调用任何其他智能体的能力）。一个智能体装了一个插件，等于所有智能体都有了那个插件。
+
+| 核心特性 | 说明 |
+|---------|------|
+| **文件即总线** | 不需要 Redis、gRPC、消息队列。一个 JSONL 文件就是一切 |
+| **Ed25519 身份** | 每条消息都签名。不需要中央注册表 |
+| **跨语言** | Python 签名，Node.js 验签。任何语言栈都能互通 |
+| **只增账本** | 每个智能体的决策都可审计、可回放 |
+| **零基础设施** | 一个文件、两个智能体、一个共享目录。仅此而已 |
 ┌─────────────────┐         codex_outbox.jsonl         ┌─────────────────┐
 │                 │ ─── tool_request ──────────────▶  │                 │
 │   Agent A       │ ◀── tool_result ────────────────  │   Agent B       │
