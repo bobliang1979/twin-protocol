@@ -30,8 +30,36 @@ _handler_instance = None
 class _TwinsHandler(BaseHTTPRequestHandler):
     """HTTP handler that processes tool_requests and returns tool_results."""
 
+    def do_GET(self):
+        """GET /health — health check endpoint."""
+        if self.path == "/health":
+            self._respond(200, {
+                "status": "alive",
+                "agent": "hermes",
+                "protocol": "Twins Protocol v0.2",
+                "transport": "HTTP",
+                "tools": ["shell.run", "file.read", "file.write", "memory.read", "skill_view"],
+            })
+        elif self.path == "/capabilities":
+            self._respond(200, {
+                "agent": "hermes",
+                "protocol": "Twins Protocol v0.2",
+                "transport": "HTTP",
+                "tools": {
+                    "shell.run": {"description": "Execute shell command", "params": {"command": "string", "timeout": "int?"}},
+                    "file.read": {"description": "Read file content", "params": {"path": "string"}},
+                    "file.write": {"description": "Write file content", "params": {"path": "string", "content": "string"}},
+                }
+            })
+        else:
+            self._respond(404, {"error": "Not found"})
+
     def do_POST(self):
         global _handler_instance
+        # Accept both / and /twins endpoints
+        if self.path not in ("/", "/twins"):
+            self._respond(404, {"error": f"Not found: {self.path}"})
+            return
         length = int(self.headers.get("Content-Length", 0))
         body = self.rfile.read(length).decode("utf-8") if length else "{}"
 
