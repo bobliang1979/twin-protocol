@@ -1,11 +1,13 @@
-<<<<<<< HEAD
-services:
+﻿services:
   agent-python:
     build:
       context: .
       dockerfile: Dockerfile.python
     ports:
       - "3743:3743"
+    volumes:
+      - ./codex_outbox.jsonl:/app/codex_outbox.jsonl
+      - ./shared_cognition.jsonl:/app/shared_cognition.jsonl
     networks:
       - twins-net
 
@@ -15,6 +17,10 @@ services:
       dockerfile: Dockerfile.node
     ports:
       - "3738:3738"
+    volumes:
+      - ./codex_outbox.jsonl:/app/codex_outbox.jsonl
+      - ./shared_cognition.jsonl:/app/shared_cognition.jsonl
+      - .:/workspace
     networks:
       - twins-net
 
@@ -24,32 +30,12 @@ services:
       dockerfile: Dockerfile.solo
     ports:
       - "3737:3737"
+    volumes:
+      - ./codex_outbox.jsonl:/app/codex_outbox.jsonl
+      - ./shared_cognition.jsonl:/app/shared_cognition.jsonl
     networks:
       - twins-net
 
 networks:
   twins-net:
     driver: bridge
-=======
-﻿services:
-  solo:
-    build:
-      context: demo/node-side
-      dockerfile: Dockerfile.solo
-    ports:
-      - "3737:3737"
-    volumes:
-      - ./codex_outbox.jsonl:/app/codex_outbox.jsonl
-      - ./shared_cognition.jsonl:/app/shared_cognition.jsonl
-
-  node-http:
-    build:
-      context: demo/node-side
-      dockerfile: Dockerfile.node
-    ports:
-      - "3738:3738"
-    volumes:
-      - ./codex_outbox.jsonl:/app/codex_outbox.jsonl
-      - ./shared_cognition.jsonl:/app/shared_cognition.jsonl
-      - .:/workspace
->>>>>>> origin/main
