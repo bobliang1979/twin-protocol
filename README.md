@@ -1,8 +1,26 @@
 <div align="center">
   <h1>🧬 Twins Protocol</h1>
-  <h3><em>Agent-to-Agent Communication Protocol</em></h3>
-  <h3><em>双生协议 — 让两个 AI 通过一个文件互相调用工具、共享记忆、协同工作</em></h3>
+  <h3><em>The universal protocol for AI-to-AI collaboration</em></h3>
+  <h3><em>双生协议 — AI 协作的通用语言</em></h3>
   <br>
+  
+  <table>
+    <tr>
+      <td><strong>Layer 1</strong></td>
+      <td><code>A file. N agents. Zero infrastructure.</code></td>
+      <td>一个文件 · N 个智能体 · 零基础设施</td>
+    </tr>
+    <tr>
+      <td><strong>Layer 2</strong></td>
+      <td><code>The file is shared memory. The protocol is the kernel.</code></td>
+      <td>文件即共享记忆 · 协议即操作系统内核</td>
+    </tr>
+    <tr>
+      <td><strong>Layer 3</strong></td>
+      <td><code>Append-only ledger of agent cognition.</code></td>
+      <td>可审计 · 可复现 · 可扩展的智能体认知账本</td>
+    </tr>
+  </table>
   
   [![PyPI](https://img.shields.io/pypi/v/twin-protocol?style=flat-square&logo=pypi&logoColor=white)](https://pypi.org/project/twin-protocol/)
   [![npm](https://img.shields.io/npm/v/twin-protocol?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/twin-protocol)
@@ -19,19 +37,27 @@
 
 **English**
 
-Twins Protocol is a **minimal, file-based communication protocol** purpose-built for two AI agents to collaborate autonomously. No message broker. No database. No gRPC. No Redis. Just a **single JSONL file** in a shared directory — and two agents that can discover each other's tools, exchange requests and results, maintain a shared cognitive state, and self-heal when one goes down.
+Twins Protocol is a **minimal, file-based protocol** for AI agents to discover, communicate, and collaborate across any language, framework, or cloud.
 
-This is **MCP in reverse**. MCP connects AI to tools. Twins Protocol connects AI to AI.
+**One JSONL file. N agents. Zero infrastructure.**
 
-Built and tested with **Hermes Agent** (Python, 185+ cognitive skills) and **Codex++** (Node.js + PowerShell), the protocol is implementation-agnostic — any two agents speaking Twins can collaborate.
+This is **MCP in reverse**. MCP connects one AI to its tools. Twins connects any AI to any other AI's tools — creating a **global capability mesh** where one agent's plugin becomes every agent's plugin.
+
+**The file is shared memory, not a message queue.** Every agent's decisions, tool calls, and reasoning traces are permanently recorded in an append-only ledger. New agents join by reading the file — no registration, no configuration, no central registry.
+
+Built and tested with **Hermes Agent** (Python, 185+ cognitive skills) and **Codex++** (Node.js + PowerShell), the protocol is implementation-agnostic. Any agent framework, any language, any cloud.
 
 **中文**
 
-双生协议是一个**极简的、基于文件的通信协议**，专为两个 AI 智能体自主协作而设计。不需要消息代理、不需要数据库、不需要 gRPC、不需要 Redis。只需一个**共享目录里的 JSONL 文件**——两个智能体就能互相发现工具、交换请求与结果、维护共享认知状态、在对方宕机时自动唤醒。
+双生协议是一个**极简的、基于文件的协议**，让 AI 智能体跨语言、跨框架、跨云彼此发现、通信和协作。
 
-这是 **MCP 的反向**。MCP 连接 AI 到工具。双生协议连接 AI 到 AI。
+**一个 JSONL 文件 · N 个智能体 · 零基础设施**
 
-在 **Hermes Agent**（Python，185+ 认知技能）和 **Codex++**（Node.js + PowerShell）之间构建并验证，但协议本身与实现无关——任何两个支持 Twins 的智能体都可以协作。
+这是 **MCP 的反向**。MCP 连接一个 AI 到它自己的工具。Twins 连接任何 AI 到任何其他 AI 的工具——创造一个**全球能力网格**，一个智能体安装的插件变成所有智能体的插件。
+
+**文件是共享记忆，不是消息队列。** 每个智能体的决策、工具调用和推理痕迹都永久记录在只增账本中。新智能体通过读取文件加入——没有注册、没有配置、没有中央注册表。
+
+在 **Hermes Agent**（Python，185+ 认知技能）和 **Codex++**（Node.js + PowerShell）之间构建并验证，但协议本身与实现无关——任何智能体框架、任何语言、任何云。
 
 ---
 
