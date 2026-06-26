@@ -1,5 +1,0 @@
-﻿FROM node:20-alpine
-WORKDIR /app
-RUN apk add --no-cache curl bash
-EXPOSE 3738
-CMD ["node", "twins-http-server.js", "3738"]

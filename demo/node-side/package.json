@@ -1,33 +1,43 @@
-{
-  "name": "twin-protocol",
-  "version": "0.1.0",
-  "description": "Twins Protocol — Agent-to-Agent communication protocol. Two AIs collaborating through a shared file.",
-  "keywords": ["twins-protocol", "agent-protocol", "ai-collaboration", "agent-to-agent", "ai-agent"],
-  "license": "MIT",
-  "author": "BOBLIANG",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bobliang1979/twin-protocol.git"
-  },
-  "bugs": {
-    "url": "https://github.com/bobliang1979/twin-protocol/issues"
-  },
-  "homepage": "https://github.com/bobliang1979/twin-protocol#readme",
-  "engines": {
-    "node": ">=18"
-  },
-  "main": "index.js",
-  "bin": {
-    "twins": "./cli.js"
-  },
-  "files": [
-    "*.js",
-    "package.json",
-    "README.md"
-  ],
-  "scripts": {
-    "test": "node twins-validate.js",
-    "start": "node twins-http-server.js",
-    "solo": "node twins-solo.js"
-  }
+﻿{
+    "name":  "@bobliang1979/twin-protocol",
+    "version":  "0.1.0",
+    "description":  "Twins Protocol 鈥?Agent-to-Agent communication protocol. Two AIs collaborating through a shared file.",
+    "keywords":  [
+                     "twins-protocol",
+                     "agent-protocol",
+                     "ai-collaboration",
+                     "agent-to-agent",
+                     "ai-agent"
+                 ],
+    "license":  "MIT",
+    "author":  "BOBLIANG",
+    "homepage":  "https://github.com/bobliang1979/twin-protocol#readme",
+    "engines":  {
+                    "node":  "\u003e=18"
+                },
+    "main":  "index.js",
+    "bin":  {
+                "twins":  "./cli.js"
+            },
+    "files":  [
+                  "*.js",
+                  "package.json",
+                  "README.md"
+              ],
+    "scripts":  {
+                    "test":  "node twins-validate.js",
+                    "start":  "node twins-http-server.js",
+                    "solo":  "node twins-solo.js"
+                },
+    "publishConfig":  {
+                          "registry":  "https://npm.pkg.github.com"
+                      },
+    "repository":  {
+                       "url":  "https://github.com/bobliang1979/twin-protocol.git",
+                       "directory":  "/demo/node-side",
+                       "type":  "git"
+                   },
+    "bugs":  {
+                 "url":  "https://github.com/bobliang1979/twin-protocol/issues"
+             }
 }

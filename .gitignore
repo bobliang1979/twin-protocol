@@ -36,3 +36,8 @@ __pycache__/
 .cross-test/
 .twins-keys/
 *.pyc
+.npmrc
+
+.env
+.env.local
+*.log

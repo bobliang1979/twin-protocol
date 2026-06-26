@@ -1,6 +1,0 @@
-FROM python:3.13-slim
-WORKDIR /app
-COPY src/twin_protocol /app/src/twin_protocol
-COPY twins_schema.json /app/
-RUN python -c "from twin_protocol import __version__; print(f'✅ twins {__version__}')"
-CMD ["python", "-c", "import sys; sys.path.insert(0,'/app/src'); from twin_protocol.transport import TwinsServer; import subprocess; TwinsServer(port=3743, handler=lambda s,t,p: {'stdout': subprocess.run(p.get('command',''),shell=True,capture_output=True,text=True,timeout=30).stdout[:5000], 'exit_code': 0}).start()"]
