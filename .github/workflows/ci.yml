@@ -32,14 +32,14 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install ".[test]"
+          pip install -e ".[test]"
       - name: Run Python compliance tests
-        run: python src/twin_protocol/test_suite.py
+        run: python -m twin_protocol.test_suite
       - name: Test identity module
         run: |
           python -c "
-          import sys; sys.path.insert(0, 'src/twin_protocol')
-          from identity import AgentIdentity, AgentIdentity_v02
+          import sys; sys.path.insert(0, 'src')
+          from twin_protocol.identity import AgentIdentity, AgentIdentity_v02
           
           v01 = AgentIdentity('ci-test-v01')
           v01.generate()
