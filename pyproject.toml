@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "twin-protocol"
+version = "0.1.0"
+description = "Twins Protocol — Agent-to-Agent communication protocol. Two AIs collaborating through a shared file."
+authors = [
+    {name = "bobliang1979", email = "bobliang1979@users.noreply.github.com"},
+]
+readme = "README.md"
+license = {text = "MIT"}
+keywords = ["ai-agent", "agent-to-agent", "mcp", "collaboration", "protocol"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.10"
+
+[project.urls]
+Homepage = "https://github.com/bobliang1979/twin-protocol"
+Repository = "https://github.com/bobliang1979/twin-protocol"
+
+[project.scripts]
+twins = "twin_protocol.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "jsonschema"]
