@@ -9,13 +9,18 @@ build/
 # Node
 node_modules/
 
-# Local
+# Local runtime state
 logs/
 .daemon.lock
 .daemon.heartbeat
 .tool_handler_marker
 .tui_watch_marker
 .processed_ids.txt
+codex_outbox.jsonl
+shared_cognition.jsonl
+.npmrc
+.env
+.env.local
 
 # IDE
 .vscode/
@@ -25,26 +30,13 @@ logs/
 .DS_Store
 Thumbs.db
 
-# Demo screenshots
-*.png
-!demo/web-app/*.png
-
-# Generated files
-.twin-protocol-full/
-*.zip
-__pycache__/
+# Generated test artifacts
 .cross-test/
 .twins-keys/
-*.pyc
-.npmrc
-
-.env
-.env.local
 *.log
 
-/npmrc
-.env
-.env.local
-__pycache__/
-*.pyc
-skills/
+# Screenshots
+*.png
+
+# Backup archives
+twin-protocol-full/

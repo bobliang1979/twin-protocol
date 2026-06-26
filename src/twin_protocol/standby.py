@@ -1,4 +1,4 @@
-"""
+﻿"""
 twin_protocol.standby — Hot Standby Protocol Extension
 
 Allows one agent to monitor another and take over if it fails.
@@ -104,3 +104,4 @@ class HotStandby:
                 pass  # Healthy, no action
 
             time.sleep(interval)
+

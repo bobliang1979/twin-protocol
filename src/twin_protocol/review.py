@@ -1,4 +1,4 @@
-"""
+﻿"""
 twin_protocol.review — Code Review Protocol Extension
 
 Standardizes the "mutual code review" pattern as Twin Protocol message types.
@@ -167,3 +167,4 @@ def auto_review(code: str, language: str = "") -> ReviewResult:
         issues=[i.__dict__ for i in issues],
         summary=f"Found {len(issues)} issues ({critical} critical, {high} high)"
     )
+

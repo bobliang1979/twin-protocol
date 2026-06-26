@@ -1,4 +1,4 @@
-"""
+﻿"""
 twins_mcp_bridge.py — MCP ↔ Twins Protocol Adapter
 
 MCP (Model Context Protocol) is the standard for AI-to-tool.
@@ -295,3 +295,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
