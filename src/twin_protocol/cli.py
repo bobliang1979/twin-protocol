@@ -34,15 +34,24 @@ def cmd_validate(args):
     try:
         import jsonschema
     except ImportError:
-        print("⚠️  jsonschema not installed. Install: pip install twin-protocol[dev]")
+        print("⚠️  jsonschema not installed. Install: pip install twin-protocol[test]")
         return 1
-    schema_path = Path(__file__).parent.parent.parent / "twins_schema.json"
-    if not schema_path.exists():
-        schema_path = Path.home() / "Desktop/hermes_codex_bridge/twins_schema.json"
-    if not schema_path.exists():
-        print("❌ twins_schema.json not found")
-        return 1
-    schema = json.loads(schema_path.read_text())
+    # Schema embedded inline — no external file dependency
+    schema = {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "type": {"type": "string", "enum": ["message", "tool_request", "tool_result", "state_update"]},
+            "source": {"type": "string"}, "target": {"type": "string"},
+            "timestamp": {"type": "string"}, "id": {"type": "string"},
+            "payload": {"type": "object"}, "request_id": {"type": "string"},
+            "tool": {"type": "string"}, "params": {"type": "object"},
+            "result": {"type": "object"}, "error": {"type": ["string", "null"]},
+            "state": {"type": "object"}, "signature": {"type": "string"},
+            "signer": {"type": "string"}
+        },
+        "required": ["type", "source", "timestamp"]
+    }
     errors = []
     with open(path, encoding="utf-8") as f:
         for i, line in enumerate(f, 1):

@@ -32,3 +32,9 @@ twins = "twin_protocol.cli:main"
 [project.optional-dependencies]
 dev = ["pytest", "pytest-cov"]
 test = ["jsonschema"]
+
+[tool.setuptools]
+package-data = { "twin_protocol" = ["py.typed"] }
+
+[tool.setuptools.packages.find]
+where = ["src"]
