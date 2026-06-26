@@ -28,3 +28,11 @@ Thumbs.db
 # Demo screenshots
 *.png
 !demo/web-app/*.png
+
+# Generated files
+.twin-protocol-full/
+*.zip
+__pycache__/
+.cross-test/
+.twins-keys/
+*.pyc

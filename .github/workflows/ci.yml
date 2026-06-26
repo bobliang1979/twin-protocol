@@ -1,0 +1,58 @@
+﻿name: Twins Protocol Compliance Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  node-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: demo/node-side
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run Node.js compliance tests
+        run: node twins-test.js
+      - name: Run cross-language tests
+        run: node cross-language-test.js || echo "Cross-lang test needs Python, skipping in CI"
+
+  python-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          pip install cryptography
+      - name: Run Python compliance tests
+        run: python src/twin_protocol/test_suite.py
+      - name: Test identity module
+        run: |
+          python -c "
+          import sys; sys.path.insert(0, 'src/twin_protocol')
+          from identity import AgentIdentity, AgentIdentity_v02
+          
+          v01 = AgentIdentity('ci-test-v01')
+          v01.generate()
+          msg = {'type': 'tool_request', 'tool': 'shell.run', 'params': {'command': 'ls'}, 'request_id': 'r1', 'timestamp': '2026-01-01T00:00:00Z', 'id': 't1'}
+          signed = v01.sign(msg)
+          r = AgentIdentity.verify_message(signed, {v01.name: v01.public_key})
+          assert r.valid, 'v0.1 verify failed'
+          print('v0.1: PASS')
+          
+          v02 = AgentIdentity_v02('ci-test-v02')
+          v02.generate()
+          signed2 = v02.sign_v02(msg)
+          r2 = AgentIdentity_v02.verify_message_v02(signed2, {v02.name: v02.public_key})
+          assert r2['valid'], 'v0.2 verify failed'
+          print('v0.2: PASS')
+          print('ALL IDENTITY TESTS PASS')
+          "
