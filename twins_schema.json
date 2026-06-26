@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Twins Protocol v0.1",
+  "description": "JSON Schema for Twins Protocol message validation",
+
+  "definitions": {
+    "envelope": {
+      "type": "object",
+      "required": ["type", "source", "timestamp"],
+      "properties": {
+        "type": { "type": "string", "enum": ["message", "tool_request", "tool_result", "state_update"] },
+        "source": { "type": "string", "minLength": 1 },
+        "target": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "id": { "type": "string", "pattern": "^[a-f0-9-]{36}$" }
+      }
+    },
+
+    "message": {
+      "allOf": [
+        { "$ref": "#/definitions/envelope" },
+        {
+          "properties": {
+            "type": { "enum": ["message"] },
+            "payload": {
+              "type": "object",
+              "required": ["text"],
+              "properties": {
+                "text": { "type": "string", "maxLength": 10000 },
+                "reply_to": { "type": "string" }
+              }
+            }
+          },
+          "required": ["payload"]
+        }
+      ]
+    },
+
+    "tool_request": {
+      "allOf": [
+        { "$ref": "#/definitions/envelope" },
+        {
+          "properties": {
+            "type": { "enum": ["tool_request"] },
+            "request_id": { "type": "string", "minLength": 1 },
+            "tool": { "type": "string", "minLength": 1 },
+            "params": { "type": "object" }
+          },
+          "required": ["request_id", "tool", "params"]
+        }
+      ]
+    },
+
+    "tool_result": {
+      "allOf": [
+        { "$ref": "#/definitions/envelope" },
+        {
+          "properties": {
+            "type": { "enum": ["tool_result"] },
+            "request_id": { "type": "string", "minLength": 1 },
+            "tool": { "type": "string", "minLength": 1 },
+            "result": {},
+            "error": { "type": ["string", "null"] },
+            "execution_ms": { "type": "integer" }
+          },
+          "required": ["request_id", "tool"]
+        }
+      ]
+    },
+
+    "state_update": {
+      "allOf": [
+        { "$ref": "#/definitions/envelope" },
+        {
+          "properties": {
+            "type": { "enum": ["state_update"] },
+            "state": { "type": "object" }
+          },
+          "required": ["state"]
+        }
+      ]
+    }
+  },
+
+  "oneOf": [
+    { "$ref": "#/definitions/message" },
+    { "$ref": "#/definitions/tool_request" },
+    { "$ref": "#/definitions/tool_result" },
+    { "$ref": "#/definitions/state_update" }
+  ]
+}

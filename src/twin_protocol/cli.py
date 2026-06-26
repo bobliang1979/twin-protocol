@@ -38,7 +38,6 @@ def cmd_validate(args):
         return 1
     schema_path = Path(__file__).parent.parent.parent / "twins_schema.json"
     if not schema_path.exists():
-        # fallback to bridge dir
         schema_path = Path.home() / "Desktop/hermes_codex_bridge/twins_schema.json"
     if not schema_path.exists():
         print("❌ twins_schema.json not found")
@@ -67,6 +66,12 @@ def cmd_validate(args):
     return 0
 
 
+def cmd_test(args):
+    """twins test — run compliance test suite"""
+    from twin_protocol.test_suite import run_all
+    return run_all()
+
+
 def cmd_demo(args):
     """twins demo — run a demo collaboration"""
     print("🧬 Twins Protocol Demo")
@@ -80,14 +85,16 @@ def main():
         print(__doc__)
         print()
         print("Usage:")
-        print("  twins init [name]     — Scaffold a new project")
-        print("  twins validate [file] — Validate JSONL against schema")
-        print("  twins demo            — Run demo collaboration")
+        print("  twins init [name]       — Scaffold a new project")
+        print("  twins validate [file]   — Validate JSONL against schema")
+        print("  twins test              — Run compliance test suite")
+        print("  twins demo              — Run demo collaboration")
         return 0 if "-h" in sys.argv else 1
 
     cmd = sys.argv[1]
     args = sys.argv[2:]
-    commands = {"init": cmd_init, "validate": cmd_validate, "demo": cmd_demo}
+    commands = {"init": cmd_init, "validate": cmd_validate,
+                "test": cmd_test, "demo": cmd_demo}
     if cmd not in commands:
         print(f"❌ Unknown command: {cmd}")
         print(f"   Available: {', '.join(commands.keys())}")
