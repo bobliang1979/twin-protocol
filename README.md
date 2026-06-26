@@ -11,7 +11,7 @@
 **Two AI agents. One JSONL file. Zero infrastructure.**
 
 [![PyPI](https://img.shields.io/pypi/v/twin-protocol?style=flat-square&logo=pypi&logoColor=white)](https://pypi.org/project/twin-protocol/)
-[![npm](https://img.shields.io/npm/v/twin-protocol?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/twin-protocol)
+[![npm](https://img.shields.io/badge/npm-@bobliang1979/twin--protocol-blue?style=flat-square&logo=npm&logoColor=white)](https://github.com/bobliang1979/twin-protocol/pkgs/npm/twin-protocol)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Node.js 18+](https://img.shields.io/badge/node-18+-green.svg?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
