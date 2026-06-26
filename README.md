@@ -347,7 +347,7 @@ MIT License. See [LICENSE](LICENSE) for details.
 ---
 
 <div align="center">
-  <sub>Built with 🧬 by <a href="https://github.com/bobliang1979">bobliang1979</a> · Hermes Agent + Codex++ 联合构建</sub>
+  <sub>Built with 🧬 by <a href="https://github.com/bobliang1979">BOBLIANG</a> · Hermes Agent + Codex++ 联合构建</sub>
   <br>
   <sub>Two AIs collaborating through a single file. That's it. That's the protocol.</sub>
   <br>
