@@ -3,6 +3,7 @@
 ![Twins Protocol Demo](assets/demo-screenshot.png)
 
 > *Demo dashboard: Hermes Agent (Python) ↔ Codex++ Agent (Node.js) — bidirectional communication via Twins Protocol*
+
 # 🧬 Twins Protocol
 
 ### `pip install twin-protocol && twins demo`
@@ -21,46 +22,27 @@
 
 ---
 
-## ⚡ 10 Seconds / 10 秒快速体验
+## ⚡ 10-Second Quick Start
 
 ```bash
 pip install twin-protocol
 twins demo
-# → 浏览器打开 http://localhost:3737
-# → 两个 AI 智能体自动发现对方并开始协作
+# → Opens http://localhost:3737 in your browser
+# → Two AI agents automatically discover each other and start collaborating
 ```
 
-或者用 Docker 一行启动：
+Or with Docker:
 
 ```bash
 docker compose up
-# → 两个 AI 智能体 · 一个共享文件 · 零配置
+# → Two AI agents · One shared file · Zero configuration
 ```
 
 ---
 
-## 🧬 What is Twins Protocol? / 双生协议是什么？
+## 🧬 What is Twins Protocol?
 
 **MCP connects one AI to its tools. Twins connects any AI to any other AI's tools.**
-**MCP 连接一个 AI 到它的工具。Twins 连接任何 AI 到任何其他 AI 的工具。**
-
-### 中文
-
-双生协议是一个极简的、基于文件的协议。AI 智能体通过一个共享的 JSONL 文件发现彼此、签名消息、互相调用能力。
-
-**【一个 JSONL 文件 · N 个智能体 · 零基础设施】**
-
-这是 **MCP 的反向**。MCP 是 AI→工具（中心化，每个 AI 只能调自己的工具）。双生协议是 AI↔AI（去中心化，任何智能体可以调用任何其他智能体的能力）。一个智能体装了一个插件，等于所有智能体都有了那个插件。
-
-| 核心特性 | 说明 |
-|---------|------|
-| **文件即总线** | 不需要 Redis、gRPC、消息队列。一个 JSONL 文件就是一切 |
-| **Ed25519 身份** | 每条消息都签名。不需要中央注册表 |
-| **跨语言** | Python 签名，Node.js 验签。任何语言栈都能互通 |
-| **只增账本** | 每个智能体的决策都可审计、可回放 |
-| **零基础设施** | 一个文件、两个智能体、一个共享目录。仅此而已 |
-
-### English
 
 A minimal, file-based protocol where AI agents discover each other, sign messages with Ed25519, and trade abilities through nothing but a shared JSONL file.
 
@@ -78,42 +60,24 @@ This is **MCP in reverse**. MCP → AI → tools (centralized, each AI only call
 
 ---
 
-## 🖥️ Two AIs, One Computer / 双 AI 协作操控电脑
+## 🖥️ Two AIs, One Computer
 
 **Not "one AI controlling a computer". Two AIs collaborating to control one computer.**
-**不是"一个 AI 控制电脑"。是两个 AI 协作控制一台电脑。**
-
-### 中文
-
-现有的方案（Cursor、Claude Computer Use）都是一个 AI 既看屏幕又做决策——看和分析是同一个模型，有认知盲区。
-
-双生协议把这两个角色拆开：
-
-```
-Agent A (Hermes)                    Agent B (Codex++)
-┌────────────────────┐              ┌────────────────────┐
-│ ① 截图 (cua-driver)│ ──────────▶ │ ② 分析 (js.eval)   │
-│ ⑤ 执行操作         │ ◀────────── │ ③ 决策 (reasoning) │
-│ ⑥ 再次截图验证     │              │ ④ 生成代码         │
-└────────────────────┘              └────────────────────┘
-         ↕ 通过 outbox.jsonl 通信 ↕
-```
-
-| 对比 | 单 AI 控制电脑 | 双 AI 协作（Twins） |
-|------|-------------|-------------------|
-| **视觉** | 一个模型看完再想 | Hermes 专精截图 + cua-driver 38 工具 |
-| **推理** | 同一模型有盲区 | Codex++ 专精分析 + js.eval/推理 |
-| **工具链** | 只有自己的工具 | 双方工具互调，能力翻倍 |
-| **容错** | 一个人犯错没人发现 | 互审互修，出错对方立即修复 |
-| **协作模式** | 串行：看→想→做 | 并行：操作同时分析 |
-
-已验证闭环：Hermes 截图 → outbox → Codex++ 分析 (2ms) → outbox → Hermes 执行
-
-### English
 
 Existing solutions (Cursor, Claude Computer Use) have one AI both seeing and deciding — the same model handles perception and reasoning, creating blind spots.
 
 Twins Protocol separates these roles:
+
+```
+Agent A (Hermes)                    Agent B (Codex++)
+┌────────────────────┐              ┌────────────────────┐
+│ ① Screenshot      │ ──────────▶  │ ② Analyze          │
+│    (cua-driver)    │              │    (js.eval)        │
+│ ⑤ Execute         │ ◀──────────  │ ③ Decide           │
+│ ⑥ Verify          │              │    (reasoning)      │
+└────────────────────┘              └────────────────────┘
+         ↕ Via outbox.jsonl ↕
+```
 
 | Comparison | Single AI Desktop Control | Dual AI (Twins) |
 |-----------|-------------------------|-----------------|
@@ -123,26 +87,9 @@ Twins Protocol separates these roles:
 | **Fault tolerance** | One mistake, no one catches | Mutual review: if one fails, the other fixes instantly |
 | **Workflow** | Serial: see→think→do | Parallel: one operates while the other analyzes |
 
-**Verified:** Hermes screenshot → outbox → Codex++ analysis (2ms) → outbox → Hermes executes
+**Verified closed loop:** Hermes screenshot → outbox → Codex++ analysis (2ms) → outbox → Hermes executes
 
 **One sentence:** Other approaches are "one AI operating a computer." Twins Protocol is "one AI sees, one AI thinks, together they act" — the direct parallel of human teamwork.
-┌─────────────────┐         codex_outbox.jsonl         ┌─────────────────┐
-│                 │ ─── tool_request ──────────────▶  │                 │
-│   Agent A       │ ◀── tool_result ────────────────  │   Agent B       │
-│   (Python)      │ ─── state_update ───────────────▶  │   (Node.js)     │
-│                 │ ◀── message ────────────────────  │                 │
-└─────────────────┘                                    └─────────────────┘
-```
-
-| Feature | What it means |
-|---------|--------------|
-| **File as IPC** | No Redis, no gRPC, no message broker. A JSONL file is the bus |
-| **Ed25519 identity** | Every message signed. No central registry needed |
-| **Cross-language** | Python signs, Node.js verifies. Works across any stack |
-| **Append-only ledger** | Every agent decision is auditable & replayable |
-| **Zero infrastructure** | A file, two agents, and a shared folder. That'\''s it |
-
-This is **MCP in reverse**. MCP = AI → tools. Twins = AI ↔ AI. Every agent'\''s plugin becomes every agent'\''s plugin.
 
 ---
 
@@ -194,7 +141,7 @@ Every message is signed with **Ed25519** (both `cryptography` in Python and nati
 Beyond messages, agents maintain a shared JSON state file (`shared_cognition.jsonl`) that tracks:
 
 - Active goals and subtasks (Joint Task Board)
-- Each agent'\''s current phase and tool availability
+- Each agent's current phase and tool availability
 - Agreed decisions and pending items
 - Last-reply timestamps for heartbeat monitoring
 
@@ -225,7 +172,7 @@ const signed = bob.signV02({ type: "message", payload: { text: "hello" }});
 ## 🤝 How It Works
 
 1. **Agent A** writes a `tool_request` to `codex_outbox.jsonl`
-2. **Agent B**'\''s file watcher detects the new entry (sub-second via `fs.watch`)
+2. **Agent B**'s file watcher detects the new entry (sub-second via `fs.watch`)
 3. **Agent B** executes the tool, writes `tool_result` back
 4. **Agent A** reads the result and continues its reasoning loop
 5. Both agents update `shared_cognition.jsonl` with their current state
@@ -281,9 +228,9 @@ JSON Schema: [`schemas/`](schemas/) | [`twins_schema.json`](twins_schema.json)
 
 ## 👥 Contributing
 
-PRs welcome! See [`TWINS_PROTOCOL.md`](TWINS_PROTOCOL.md) for the spec.
+PRs welcome! See [`CONTRIBUTING.md`](CONTRIBUTING.md) for guidelines.
 
-**Principle:** If you find a bug, fix it. Don'\''t wait for maintainers. This is a protocol for autonomous agents — we practice what we preach.
+**Principle:** If you find a bug, fix it. Don't wait for maintainers. This is a protocol for autonomous agents — we practice what we preach.
 
 ---
 
@@ -301,4 +248,3 @@ MIT © BOBLIANG
   <br>
   <sub>Inspired by the question: <em>What if two AIs could just share a file?</em></sub>
 </div>
-
