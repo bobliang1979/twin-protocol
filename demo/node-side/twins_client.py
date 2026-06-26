@@ -111,18 +111,28 @@ def repl(server=SERVER_URL):
             print(f"Unknown: {cmd}")
 
 if __name__ == "__main__":
+    # Check special commands first
+    if len(sys.argv) >= 2:
+        if sys.argv[1] == "health":
+            server = sys.argv[2] if len(sys.argv) >= 3 else SERVER_URL
+            print(json.dumps(check_health(server), indent=2))
+            sys.exit(0)
+        elif sys.argv[1] == "repl":
+            repl()
+            sys.exit(0)
+        elif sys.argv[1] in ("help", "--help", "-h"):
+            print(__doc__)
+            sys.exit(0)
+
     if len(sys.argv) >= 3:
-        # CLI mode: python twins_client.py <tool> <params-json>
+        # CLI mode: python twins_client.py <tool> <params-json> [server]
         tool = sys.argv[1]
         params = json.loads(sys.argv[2])
         server = sys.argv[3] if len(sys.argv) >= 4 else SERVER_URL
         result = call_tool(tool, params, server)
         if result:
             print(json.dumps(result, indent=2, ensure_ascii=False))
-    elif len(sys.argv) == 2 and sys.argv[1] == "repl":
-        repl()
-    elif len(sys.argv) == 2 and sys.argv[1] == "health":
-        print(json.dumps(check_health(), indent=2))
+        sys.exit(0)
     else:
         print("Usage:")
         print("  python twins_client.py <tool> <params-json> [server-url]")
