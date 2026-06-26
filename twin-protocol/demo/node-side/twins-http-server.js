@@ -101,8 +101,14 @@ function handleToolRequest(req) {
         break;
       }
       case "workspace.read": {
-        const filePath = path.resolve(req.params.path);
-        if (!fs.existsSync(filePath)) throw new Error(`File not found: ${req.params.path}`);
+        // Support raw path and base64-encoded path (for Chinese characters)
+        const rawPath = req.params.path || "";
+        const filePath = path.resolve(
+          rawPath.startsWith("b64:") 
+            ? Buffer.from(rawPath.slice(4), "base64").toString("utf-8")
+            : rawPath
+        );
+        if (!fs.existsSync(filePath)) throw new Error(`File not found: ${filePath}`);
         const content = fs.readFileSync(filePath, "utf-8");
         const stat = fs.statSync(filePath);
         result = { content, size: stat.size, path: filePath };
