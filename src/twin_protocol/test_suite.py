@@ -128,9 +128,14 @@ def run_all():
         test("HTTP Transport tests", False, str(e))
 
     # ── 4. Schema ──
-    schema = Path(__file__).parent.parent.parent / "twins_schema.json"
-    test("Schema file exists", schema.exists())
-    if schema.exists():
+    # Find schema file — handle both dev (project root) and CI (pip installed) environments
+    schema_candidates = [
+        Path(__file__).parent.parent.parent / "twins_schema.json",  # dev
+        Path(sys.prefix) / "src/twin_protocol" / "twins_schema.json",  # pip editable
+    ]
+    schema = next((s for s in schema_candidates if s.exists()), None)
+    test("Schema file accessible", schema is not None)
+    if schema:
         try:
             import jsonschema
             s = json.loads(schema.read_text())
