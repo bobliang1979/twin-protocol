@@ -1,0 +1,31 @@
+services:
+  agent-python:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    ports:
+      - "3743:3743"
+    networks:
+      - twins-net
+
+  agent-node:
+    build:
+      context: ./demo/node-side
+      dockerfile: Dockerfile.node
+    ports:
+      - "3738:3738"
+    networks:
+      - twins-net
+
+  solo-dashboard:
+    build:
+      context: ./demo/node-side
+      dockerfile: Dockerfile.solo
+    ports:
+      - "3737:3737"
+    networks:
+      - twins-net
+
+networks:
+  twins-net:
+    driver: bridge
