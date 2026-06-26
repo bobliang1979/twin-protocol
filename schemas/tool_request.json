@@ -1,0 +1,21 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://twins-protocol.dev/schemas/tool_request.json",
+  "title": "Twins Protocol - Tool Request",
+  "description": "工具调用请求：一个 AI 请求另一个 AI 执行工具",
+  "type": "object",
+  "required": ["type", "source", "request_id", "tool", "params"],
+  "properties": {
+    "type": { "const": "tool_request" },
+    "source": { "type": "string", "pattern": "^agent-[a-z]$|^hermes$|^codex$" },
+    "request_id": { "type": "string", "format": "uuid", "description": "全局唯一，用于幂等" },
+    "tool": {
+      "type": "string",
+      "enum": ["shell.run", "file.read", "file.write", "screenshot", "memory.read", "skill_view", "js.eval", "workspace.read"]
+    },
+    "params": {
+      "type": "object",
+      "description": "取决于 tool 类型，见标准工具接口表"
+    }
+  }
+}
