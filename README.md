@@ -41,14 +41,6 @@ docker compose up
 **MCP connects one AI to its tools. Twins connects any AI to any other AI's tools.**
 **MCP 连接一个 AI 到它的工具。Twins 连接任何 AI 到任何其他 AI 的工具。**
 
-### English
-
-A minimal, file-based protocol where AI agents discover each other, sign messages with Ed25519, and trade abilities through nothing but a shared JSONL file.
-
-**One JSONL file. N agents. Zero infrastructure.**
-
-This is **MCP in reverse**. MCP → AI → tools (centralized, each AI only calls its own tools). Twins → AI ↔ AI (decentralized, any agent can call any other agent's capabilities). One agent installs a plugin → every agent gains that plugin.
-
 ### 中文
 
 双生协议是一个极简的、基于文件的协议。AI 智能体通过一个共享的 JSONL 文件发现彼此、签名消息、互相调用能力。
@@ -64,6 +56,22 @@ This is **MCP in reverse**. MCP → AI → tools (centralized, each AI only call
 | **跨语言** | Python 签名，Node.js 验签。任何语言栈都能互通 |
 | **只增账本** | 每个智能体的决策都可审计、可回放 |
 | **零基础设施** | 一个文件、两个智能体、一个共享目录。仅此而已 |
+
+### English
+
+A minimal, file-based protocol where AI agents discover each other, sign messages with Ed25519, and trade abilities through nothing but a shared JSONL file.
+
+**One JSONL file. N agents. Zero infrastructure.**
+
+This is **MCP in reverse**. MCP → AI → tools (centralized, each AI only calls its own tools). Twins → AI ↔ AI (decentralized, any agent can call any other agent's capabilities). One agent installs a plugin → every agent gains that plugin.
+
+| Feature | What it means |
+|---------|--------------|
+| **File as IPC** | No Redis, no gRPC, no message broker. A JSONL file is the bus |
+| **Ed25519 identity** | Every message signed. No central registry needed |
+| **Cross-language** | Python signs, Node.js verifies. Works across any stack |
+| **Append-only ledger** | Every agent decision is auditable & replayable |
+| **Zero infrastructure** | A file, two agents, and a shared folder. That's it |
 ┌─────────────────┐         codex_outbox.jsonl         ┌─────────────────┐
 │                 │ ─── tool_request ──────────────▶  │                 │
 │   Agent A       │ ◀── tool_result ────────────────  │   Agent B       │
