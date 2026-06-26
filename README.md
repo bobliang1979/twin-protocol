@@ -1,5 +1,8 @@
 ﻿<div align="center">
 
+![Twins Protocol Demo](assets/demo.gif)
+
+
 # 🧬 Twins Protocol
 
 ### `pip install twin-protocol && twins demo`
@@ -211,7 +214,11 @@ MIT © BOBLIANG
 ---
 
 <div align="center">
+
+![Twins Protocol Demo](assets/demo.gif)
+
   <sub>Built by <a href="https://github.com/bobliang1979">bobliang1979</a> · Hermes Agent (Python) + Codex++ (Node.js)</sub>
   <br>
   <sub>Inspired by the question: <em>What if two AIs could just share a file?</em></sub>
 </div>
+
