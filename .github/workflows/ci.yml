@@ -31,7 +31,8 @@ jobs:
           python-version: "3.11"
       - name: Install dependencies
         run: |
-          pip install cryptography
+          pip install --upgrade pip
+          pip install ".[test]"
       - name: Run Python compliance tests
         run: python src/twin_protocol/test_suite.py
       - name: Test identity module

@@ -20,6 +20,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 requires-python = ">=3.10"
+dependencies = ["cryptography"]
 
 [project.urls]
 Homepage = "https://github.com/bobliang1979/twin-protocol"
@@ -29,4 +30,5 @@ Repository = "https://github.com/bobliang1979/twin-protocol"
 twins = "twin_protocol.cli:main"
 
 [project.optional-dependencies]
-dev = ["pytest", "pytest-cov", "jsonschema"]
+dev = ["pytest", "pytest-cov"]
+test = ["jsonschema"]
