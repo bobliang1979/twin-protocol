@@ -63,12 +63,12 @@ function parseJSONL(raw) {
 function serveOutbox(res) {
   try {
     const raw = fs.readFileSync(OUTBOX_PATH, "utf-8");
-    const items = parseJSONL(raw);
-    res.writeHead(200, { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" });
-    res.end(JSON.stringify(items));
+    // Return raw JSONL text — client splits by newline and parses each line
+    res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8", "Access-Control-Allow-Origin": "*" });
+    res.end(raw.trim() || "[]");
   } catch (e) {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end("[]");
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("");
   }
 }
 

@@ -1,8 +1,8 @@
 ﻿<div align="center">
 
-![Twins Protocol Demo](assets/demo.gif)
+![Twins Protocol Demo](assets/demo-screenshot.png)
 
-
+> *Demo dashboard: Hermes Agent (Python) ↔ Codex++ Agent (Node.js) — bidirectional communication via Twins Protocol*
 # 🧬 Twins Protocol
 
 ### `pip install twin-protocol && twins demo`
@@ -295,7 +295,7 @@ MIT © BOBLIANG
 
 <div align="center">
 
-![Twins Protocol Demo](assets/demo.gif)
+|![Twins Protocol Demo](assets/demo-screenshot.png)
 
   <sub>Built by <a href="https://github.com/bobliang1979">bobliang1979</a> · Hermes Agent (Python) + Codex++ (Node.js)</sub>
   <br>
