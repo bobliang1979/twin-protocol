@@ -1,44 +1,19 @@
-﻿# Python
 __pycache__/
 *.pyc
-*.egg-info/
-dist/
-build/
-.eggs/
-
-# Node
-node_modules/
-
-# Local runtime state
+*.pyo
+*.bak
+*.pid
+*.heartbeat
 logs/
-.daemon.lock
-.daemon.heartbeat
-.tool_handler_marker
-.tui_watch_marker
-.processed_ids.txt
-codex_outbox.jsonl
-shared_cognition.jsonl
-.npmrc
-.env
-.env.local
-
-# IDE
+*.log
+.scratchpad/
+.seen_*
+.processed_*
+.daemon.*
+.codex_*
+.conversation_*
+.skill_*
 .vscode/
 .idea/
-
-# OS
 .DS_Store
 Thumbs.db
-
-# Generated test artifacts
-.cross-test/
-.twins-keys/
-*.log
-
-# Screenshots
-*.png
-
-# Backup archives
-twin-protocol-full/
-# Processed request IDs
-.processed_ids*
