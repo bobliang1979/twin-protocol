@@ -20,10 +20,15 @@ class Brain:
         self._discover()
     
     def _discover(self):
-        """自动扫描标签页, 检测所有AI模型"""
+        """自动扫描标签页, 检测所有AI模型 (带超时防死锁)"""
+        self.models = {}
         for pg in self._browser.contexts[0].pages:
-            url = pg.url.lower()
-            title = pg.title().lower()
+            try:
+                url = pg.url if hasattr(pg, 'url') else pg.evaluate("window.location.href", timeout=2000)
+                title = pg.title(timeout=2000) if hasattr(pg, 'title') else ""
+            except:
+                continue
+            url, title = (url or "").lower(), (title or "").lower()
             if "gemini" in url or "gemini" in title:
                 self.models["Gemini"] = pg
             elif "qianwen" in url or "tongyi" in url or "通义" in title:
@@ -33,6 +38,37 @@ class Brain:
             elif "copilot" in url or "bing.com" in url:
                 self.models["Copilot"] = pg
         print(f"  Models: {list(self.models.keys())}")
+        # 定时重扫: 每30秒检测新标签页 (仅首次启动)
+        if not hasattr(self, '_rescan_started'):
+            self._rescan_started = True
+            t = threading.Thread(target=self._rescan_loop, daemon=True)
+            t.start()
+    
+    def _rescan_loop(self):
+        while True:
+            time.sleep(30)
+            try:
+                self._rescan()
+            except:
+                pass
+    
+    def _rescan(self):
+        """重新扫描标签页 (不启动新线程)"""
+        for pg in self._browser.contexts[0].pages:
+            try:
+                url = pg.url if hasattr(pg, 'url') else pg.evaluate("window.location.href", timeout=1000)
+                title = pg.title(timeout=1000) if hasattr(pg, 'title') else ""
+            except:
+                continue
+            url, title = (url or "").lower(), (title or "").lower()
+            name = None
+            if "gemini" in url or "gemini" in title: name = "Gemini"
+            elif "qianwen" in url or "tongyi" in url: name = "通义千问"
+            elif "chatglm" in url or "智谱" in title: name = "ChatGLM"
+            elif "copilot" in url or "bing.com" in url: name = "Copilot"
+            if name and name not in self.models:
+                self.models[name] = pg
+                print(f"  [discover] New model: {name}")
     
     def _find_input(self, page):
         """自动探测输入框 (5种选择器)"""
